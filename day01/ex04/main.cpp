@@ -11,7 +11,7 @@ void    findReplace(std::string s1, std::string s2, std::string &line)
     {
         replace = line.substr(0, index) + s2 + line.substr(index + s1.length());
         line = replace;
-        index = line.find(s1);
+        index = line.find(s1, index + s2.length());
     }
 }
 
