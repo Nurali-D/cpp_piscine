@@ -8,6 +8,17 @@ ScavTrap::ScavTrap(const std::string &n) : ClapTrap(n)
     std::cout << "ScavTrap " << ClapTrap::getName() << " is created." << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
+{
+}
+
+const ScavTrap &ScavTrap::operator=(const ScavTrap &other)
+{
+    if (&other != this)
+        this->setName(other.getName());
+    return (*this);
+}
+
 ScavTrap::~ScavTrap()
 {
     std::cout << "ScavTrap " << ClapTrap::getName() << " is destroyed." << std::endl;

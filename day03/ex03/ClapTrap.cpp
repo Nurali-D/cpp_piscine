@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(const std::string &n) : name(n + "_clap_name")
+ClapTrap::ClapTrap(const std::string &n) : name(n)
 {
     setHitPoints(10);
     setEnergyPoints(10);
@@ -11,6 +11,25 @@ ClapTrap::ClapTrap(const std::string &n) : name(n + "_clap_name")
 ClapTrap::~ClapTrap(void)
 {
     std::cout << "ClapTrap " << name << " is destroyed." << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other)
+{
+    *this = other;
+    std::cout << "ClapTrap copy constructor called" << std::endl;
+}
+
+const ClapTrap  &ClapTrap::operator=(const ClapTrap &other)
+{
+    std::cout << "ClapTrap assignation operator called" << std::endl;
+    if (&other != this)
+    {
+        this->name = other.name;
+        this->hitPoints = other.hitPoints;
+        this->energyPoints = other.energyPoints;
+        this->attackDamage = other.attackDamage;
+    }
+    return (*this);
 }
 
 void            ClapTrap::attack(std::string const &target)
@@ -70,4 +89,9 @@ unsigned int    ClapTrap::getAttackDamage() const
 std::string     ClapTrap::getName() const
 {
     return (name);
+}
+
+void            ClapTrap::setName(const std::string &n)
+{
+    name = n;
 }

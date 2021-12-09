@@ -8,6 +8,17 @@ FragTrap::FragTrap(const std::string &n) : ClapTrap(n)
     std::cout << "FragTrap " << ClapTrap::getName() << " is created." << std::endl;
 }
 
+FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
+{
+}
+
+const FragTrap &FragTrap::operator=(const FragTrap &other)
+{
+    if (&other != this)
+        this->setName(other.getName());
+    return (*this);
+}
+
 FragTrap::~FragTrap()
 {
     std::cout << "FragTrap " << ClapTrap::getName() << " is destroyed." << std::endl;

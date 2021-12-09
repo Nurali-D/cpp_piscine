@@ -10,6 +10,20 @@ DiamondTrap::DiamondTrap(const std::string &n) : ClapTrap(n),
     std::cout << "DiamondTrap " << getName() << " is created." << std::endl;
 }
 
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other),
+    FragTrap(other), ScavTrap(other)
+{
+}
+
+const DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
+{
+    if (&other != this)
+    {
+        this->setName(other.getName());
+    }
+    return (*this);
+}
+
 DiamondTrap::~DiamondTrap()
 {
     std::cout << "DiamondTrap " << getName() << " is destroyed." << std::endl;
