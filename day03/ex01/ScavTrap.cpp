@@ -10,12 +10,13 @@ ScavTrap::ScavTrap(const std::string &n) : ClapTrap(n)
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
+    *this = other;
 }
 
 const ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
     if (&other != this)
-        this->setName(other.getName());
+        ClapTrap::operator=(other);
     return (*this);
 }
 

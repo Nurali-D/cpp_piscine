@@ -13,14 +13,13 @@ DiamondTrap::DiamondTrap(const std::string &n) : ClapTrap(n),
 DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other),
     FragTrap(other), ScavTrap(other)
 {
+    *this = other;
 }
 
 const DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
 {
     if (&other != this)
-    {
-        this->setName(other.getName());
-    }
+        ClapTrap::operator=(other);
     return (*this);
 }
 

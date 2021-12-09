@@ -10,12 +10,13 @@ FragTrap::FragTrap(const std::string &n) : ClapTrap(n)
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
+    *this = other;
 }
 
 const FragTrap &FragTrap::operator=(const FragTrap &other)
 {
     if (&other != this)
-        this->setName(other.getName());
+        ClapTrap::operator=(other);
     return (*this);
 }
 
